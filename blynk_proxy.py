@@ -32,7 +32,7 @@ def home():
 def get_pin(pin):
     try:
         # Convert pin number to Blynk Virtual Pin format (1->V0, 2->V1, etc.)
-        virtual_pin = f"V{int(pin)-1}" if pin.isdigit() else pin
+        virtual_pin = f"V{int(pin)-1}"
         url = f"https://{BLYNK_SERVER}/external/api/get?token={BLYNK_AUTH_TOKEN}&pin={virtual_pin}"
         response = requests.get(url, timeout=10)
         
@@ -61,7 +61,7 @@ def get_pin(pin):
 def update_pin(pin, value):
     try:
         # Convert pin number to Blynk Virtual Pin format (1->V0, 2->V1, etc.)
-        virtual_pin = f"V{int(pin)-1}" if pin.isdigit() else pin
+        virtual_pin = f"V{int(pin)-1}"
         url = f"https://{BLYNK_SERVER}/external/api/update?token={BLYNK_AUTH_TOKEN}&pin={virtual_pin}&value={value}"
         response = requests.get(url, timeout=10)
         
