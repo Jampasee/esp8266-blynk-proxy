@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: esp8266-blynk-proxy
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn blynk_proxy:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
