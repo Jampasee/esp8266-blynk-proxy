@@ -31,8 +31,8 @@ def home():
 @app.route('/api/get/<int:pin>')
 def get_pin(pin):
     try:
-        # Convert pin number to Blynk Virtual Pin format (1->V0, 2->V1, etc.)
-        virtual_pin = f"V{int(pin)-1}"
+        # Convert pin number to Blynk Virtual Pin format (1->V1, 2->V2, etc.)
+        virtual_pin = f"V{int(pin)}"
         url = f"https://{BLYNK_SERVER}/external/api/get?token={BLYNK_AUTH_TOKEN}&pin={virtual_pin}"
         response = requests.get(url, timeout=10)
         
@@ -60,8 +60,8 @@ def get_pin(pin):
 @app.route('/api/update/<int:pin>/<value>')
 def update_pin(pin, value):
     try:
-        # Convert pin number to Blynk Virtual Pin format (1->V0, 2->V1, etc.)
-        virtual_pin = f"V{int(pin)-1}"
+        # Convert pin number to Blynk Virtual Pin format (1->V1, 2->V2, etc.)
+        virtual_pin = f"V{int(pin)}"
         url = f"https://{BLYNK_SERVER}/external/api/update?token={BLYNK_AUTH_TOKEN}&pin={virtual_pin}&value={value}"
         response = requests.get(url, timeout=10)
         
@@ -120,8 +120,8 @@ def get_all_pins():
     pins = {}
     for pin in range(1, 5):  # V1 to V4
         try:
-            # Convert pin number to Blynk Virtual Pin format (1->V0, 2->V1, etc.)
-            virtual_pin = f"V{pin-1}"
+            # Convert pin number to Blynk Virtual Pin format (1->V1, 2->V2, etc.)
+            virtual_pin = f"V{pin}"
             url = f"https://{BLYNK_SERVER}/external/api/get?token={BLYNK_AUTH_TOKEN}&pin={virtual_pin}"
             response = requests.get(url, timeout=5)
             
